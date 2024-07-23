@@ -13,11 +13,11 @@ public class GestionHospital {
 
     }
 
-    public void eliminarPaciente(String nombreAnimal){
+    public void eliminarPacienteporNombre(String nombreAnimal){
         pacientes.removeIf(Paciente -> Paciente.getNombreAnimal().equals(nombreAnimal));
     }
 
-    public Paciente buscarPaciente(String nombreAnimal){
+    public Paciente buscarPacienteporNombre(String nombreAnimal){
         for (Paciente paciente : pacientes) {
             if (paciente.getNombreAnimal().equals(nombreAnimal)) {
                 return paciente;
@@ -37,11 +37,15 @@ public class GestionHospital {
 
     }
 
-    public void reservarTurnoCirujia(){
+    public void reservarTurnoCirugia(){
 
     }
 
     public void reservarTurnoVacuna(){
+
+    }
+
+    public void cancelarReserva(){
 
     }
 }

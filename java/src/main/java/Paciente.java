@@ -4,7 +4,7 @@ public class Paciente {
     String razaAnimal;
 
 
-    public Paciente() {
+    public Paciente(String nombreAnimal, int edad, String raza) {
     }
 
     public Paciente(int edad, String nombreAnimal, String razaAnimal) {
