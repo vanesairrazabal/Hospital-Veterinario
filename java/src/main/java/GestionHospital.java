@@ -4,7 +4,7 @@ import java.util.List;
 public class GestionHospital {
     List<Paciente> pacientes;
 
-    public void GestionHospital(){
+    public GestionHospital(){
         pacientes = new ArrayList<>();
     }
 
@@ -26,26 +26,4 @@ public class GestionHospital {
         return null;
     }
 
-    public void reservarTurnoConsulta(){
-
-    }
-    public void reservarTurnoUrgencia(){
-
-    }
-
-    public void reservarTurnoHigiene(){
-
-    }
-
-    public void reservarTurnoCirugia(){
-
-    }
-
-    public void reservarTurnoVacuna(){
-
-    }
-
-    public void cancelarReserva(){
-
-    }
 }
