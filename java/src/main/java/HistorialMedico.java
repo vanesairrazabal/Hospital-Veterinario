@@ -1,41 +1,33 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class HistorialMedico {
-    List<String> patologias = new ArrayList<String>();
 
-    public String getNombrePatologia() {
-        return nombrePatologia;
-    }
+    public List<ConsultaMedica> historial;
 
-    String nombrePatologia;
-
-    public HistorialMedico(List<String> patologias) {
-        this.patologias = patologias;
-    }
 
     public HistorialMedico() {
-
+        this.historial = new ArrayList<>();
     }
 
-    public void agregarPatologia(String patologia) {
-        patologias.add(patologia);
+    public void agregarConsulta(ConsultaMedica consulta) {
+        historial.add(consulta);
     }
 
-    public void eliminarPatologia(String patologia) {
-      patologias.remove(patologia);
+    public List<ConsultaMedica> obtenerHistorial() {
+        return historial;
     }
 
-
-    public void setNombrePatologia(String nombrePatologia) {
-        this.nombrePatologia = nombrePatologia;
-    }
-
-    public List<String> getPatologias() {
-        return patologias;
-    }
-
-    public void setPatologias(List<String> patologias) {
-        this.patologias = patologias;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Historial Médico:\n");
+        for (ConsultaMedica consulta : historial) {
+            sb.append(consulta.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }
+

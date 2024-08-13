@@ -4,13 +4,13 @@ import java.util.List;
 public class GestionHospital {
     List<Paciente> pacientes;
 
+
     public GestionHospital(){
         pacientes = new ArrayList<>();
     }
 
     public void agregarPaciente(Paciente paciente) {
         pacientes.add(paciente);
-
     }
 
     public void eliminarPacienteporNombre(String nombreAnimal){
@@ -18,12 +18,15 @@ public class GestionHospital {
     }
 
     public Paciente buscarPacienteporNombre(String nombreAnimal){
+        Paciente retorno = null;
         for (Paciente paciente : pacientes) {
             if (paciente.getNombreAnimal().equals(nombreAnimal)) {
-                return paciente;
+                retorno = paciente;
             }
         }
-        return null;
+        return retorno;
     }
+
+
 
 }
