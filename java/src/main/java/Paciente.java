@@ -6,7 +6,7 @@ public class Paciente {
     int edad;
     String razaAnimal;
     String especie;
-    HistorialMedico historialMedico;
+    static HistorialMedico historialMedico;
 
 
     public Paciente(String nombreAnimal, int edad, String razaAnimal, String especie) {
@@ -43,12 +43,12 @@ public class Paciente {
         this.razaAnimal = razaAnimal;
     }
 
-    public void agregarConsulta(ConsultaMedica consulta) {
+    public static void agregarConsulta(ConsultaMedica consulta) {
         historialMedico.agregarConsulta(consulta);
     }
 
 
-    public HistorialMedico getHistorialMedico() {
+    public static HistorialMedico getHistorialMedico() {
         return historialMedico;
     }
 

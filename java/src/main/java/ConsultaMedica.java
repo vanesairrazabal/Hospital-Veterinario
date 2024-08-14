@@ -1,13 +1,15 @@
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ConsultaMedica {
 
-    String fecha;
+   Date fecha;
     String medicamento;
     String patología;
-    int costo;
+    static int costo;
 
-    public ConsultaMedica(String paciente, String fecha, String medicamento, String patología, int costo) {
+    public ConsultaMedica(String paciente, Date fecha, String medicamento, String patología, int costo) {
         this.fecha = fecha;
         this.medicamento = medicamento;
         this.patología = patología;
@@ -17,6 +19,8 @@ public class ConsultaMedica {
     public ConsultaMedica() {
     }
 
+
+
     public String getMedicamento() {
         return medicamento;
     }
@@ -25,11 +29,11 @@ public class ConsultaMedica {
         this.medicamento = medicamento;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -48,6 +52,12 @@ public class ConsultaMedica {
     public void setCosto(int costo) {
         this.costo = costo;
     }
+
+    public String getFormattedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Cambia el formato según lo necesites
+        return sdf.format(fecha);
+    }
+
     @Override
     public String toString() {
         return "ConsultaMedica{" +

@@ -1,10 +1,13 @@
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainHospital {
     static int opcionUsuario = -1;
     static Scanner scanner = new Scanner(System.in);
     static HistorialMedico historialMedico = new HistorialMedico();
-
 
     public static void mostrarMenu() {
         System.out.println("...................");
@@ -31,7 +34,7 @@ public class MainHospital {
         System.out.println("----------------------");
         SistemaDeReserva reservaTurno = new SistemaDeReserva();
         GestionHospital gestionHospital = new GestionHospital();
-        Paciente paciente = crearPaciente();
+
         // Crear veterinarios y citas
         Veterinario vet1 = new Veterinario("Dr.House");
         vet1.agregarCita(new Turno("2024-08-01 09:00"));
@@ -152,24 +155,23 @@ public class MainHospital {
                     }
                     break;
                 case 10:
+                    System.out.println("Ingrese el Veterinario a consultar: 1- Dr.House, 2- Dr.Smith");
                     indiceVet = scanner.nextInt();
                     reservaTurno.mostrarCitasDisponibles(indiceVet);
                     break;
                 case 11:
-                    paciente.agregarConsulta(registrarConsulta());
+                    Paciente.agregarConsulta(registrarConsulta());
                     break;
                 case 12:
-                    System.out.println(paciente.getHistorialMedico());
+                    System.out.println(Paciente.getHistorialMedico());
                     break;
-
+                case 13:
+                    mostrarCosto();
+                    break;
             }
         }
     }
 
-    public static String registrarVacuna() {
-        System.out.println("Ingrese la vacuna");
-        return scanner.next();
-    }
 
     public static Paciente crearPaciente() {
         System.out.println("Ingrese el nombre");
@@ -191,8 +193,21 @@ public class MainHospital {
     public static ConsultaMedica registrarConsulta() {
         System.out.println("Ingrese nombre de la mascota");
         String paciente = scanner.next();
-        System.out.println("Ingrese la fecha");
-        String fecha = scanner.next();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+
+        System.out.println("Ingrese la fecha en formato dd/MM/yyyy:");
+        String fechaStr = scanner.nextLine();
+
+        Date fecha = null;
+        try {
+            fecha = sdf.parse(fechaStr);
+            System.out.println("Fecha ingresada: " + sdf.format(fecha));
+        } catch (ParseException e) {
+            System.out.println("Formato de fecha inválido. Por favor, use el formato dd/MM/yyyy.");
+        }
+
         System.out.println("Ingrese patologia");
         String patologia = scanner.next();
         System.out.println("Ingrese el medicamento indicado");
@@ -201,7 +216,9 @@ public class MainHospital {
         int costo = scanner.nextInt();
         return new ConsultaMedica(paciente, fecha, medicamento, patologia, costo);
     }
-
+    public static int mostrarCosto(){
+        return ConsultaMedica.costo;
+    }
 }
 
 
