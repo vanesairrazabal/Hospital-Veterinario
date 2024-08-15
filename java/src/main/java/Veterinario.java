@@ -1,20 +1,32 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Veterinario {
+public class Veterinario {
+
+    private int nroRegistro;
     private String nombre;
     private List<Turno> citas;
 
-    public Veterinario(String nombre) {
-        this.nombre = nombre;
-        this.citas = new ArrayList<>();
+    public int getNroRegistro() {
+        return nroRegistro;
+    }
+
+    public void setNroRegistro(int nroRegistro) {
+        this.nroRegistro = nroRegistro;
     }
 
     public String getNombre() {
         return nombre;
     }
+
     public List<Turno> getCitas() {
         return citas;
+    }
+
+    public Veterinario(int numRegistro, String nombre) {
+        this.nroRegistro = numRegistro;
+        this.nombre = nombre;
+        this.citas = new ArrayList<>();
     }
 
     public boolean tieneCitasDisponibles() {

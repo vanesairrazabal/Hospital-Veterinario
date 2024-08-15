@@ -5,21 +5,20 @@ import org.junit.jupiter.api.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.zip.DataFormatException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainHospitalTest {
+public class MainHospitalTest {
 
-    Paciente paciente = new Paciente("coco", 3, "Dogo","perro");
+    Paciente paciente = new Paciente(1,"coco", 3, "Dogo","perro");
     GestionHospital gestionHospital = new GestionHospital();
     SistemaDeReserva reservaDeTurno = new SistemaDeReserva();
-    Veterinario veterinario1 = new Veterinario("Dr.House");
-    Veterinario veterinario2 = new Veterinario("Dr.Smith");
+    Veterinario veterinario1 = new Veterinario(5422, "Dr.House");
+    Veterinario veterinario2 = new Veterinario(8514, "Dr.Smith");
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date fecha = sdf.parse("14/08/2024");
-    ConsultaMedica consultaMedica = new ConsultaMedica("coco", fecha, "paracetamol","dolor abdominal", 3600);
+    ConsultaMedica consultaMedica = new ConsultaMedica(paciente, veterinario1, fecha, "paracetamol","dolor abdominal", 3600);
 
     MainHospitalTest() throws ParseException {
     }
@@ -40,14 +39,16 @@ class MainHospitalTest {
     }
 
     @Test
-    void buscarPacienteporNombre() {
-        gestionHospital.buscarPacienteporNombre(paciente.nombreAnimal);
-       assertEquals(gestionHospital.buscarPacienteporNombre(paciente.razaAnimal),gestionHospital.buscarPacienteporNombre(paciente.nombreAnimal));
+    void buscarPacientePorNumeroDeRegistro() {
+        gestionHospital.agregarPaciente(paciente);
+        gestionHospital.buscarPacientePorNumeroDeRegistro(paciente.getNumeroRegistro(), false);
+        assertEquals(null, gestionHospital.buscarPacientePorNumeroDeRegistro(8, false));
+        assertEquals(1, gestionHospital.buscarPacientePorNumeroDeRegistro(paciente.getNumeroRegistro(), false).getNumeroRegistro());
     }
 
     @Test
-    void eliminarPacienteporNombre() {
-        gestionHospital.eliminarPacienteporNombre(paciente.nombreAnimal);
+    void eliminarPacientePorNumeroDeRegistro() {
+        gestionHospital.eliminarPacientePorNumeroDeRegistro(paciente.getNumeroRegistro());
     }
 
     @Test
@@ -72,6 +73,6 @@ class MainHospitalTest {
     }
     @Test
     void agregarConsulta(){
-        Paciente.agregarConsulta(consultaMedica);
+        paciente.agregarConsulta(consultaMedica);
     }
 }

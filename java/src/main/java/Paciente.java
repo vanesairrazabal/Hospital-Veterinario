@@ -2,21 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Paciente {
-    String nombreAnimal;
-    int edad;
-    String razaAnimal;
-    String especie;
-    static HistorialMedico historialMedico;
 
+    private int numeroRegistro;
+    private String nombreAnimal;
+    private int edad;
+    private String razaAnimal;
+    private String especie;
+    private HistorialMedico historialMedico;
 
-    public Paciente(String nombreAnimal, int edad, String razaAnimal, String especie) {
-        this.nombreAnimal = nombreAnimal;
-        this.edad = edad;
-        this.razaAnimal = razaAnimal;
-        this.especie = especie;
-        this.historialMedico = new HistorialMedico();
+    public int getNumeroRegistro() {
+        return numeroRegistro;
+    }
 
-
+    public void setNumeroRegistro(int numeroRegistro) {
+        this.numeroRegistro = numeroRegistro;
     }
 
     public String getNombreAnimal() {
@@ -43,13 +42,31 @@ public class Paciente {
         this.razaAnimal = razaAnimal;
     }
 
-    public static void agregarConsulta(ConsultaMedica consulta) {
-        historialMedico.agregarConsulta(consulta);
+    public void agregarConsulta(ConsultaMedica consulta) {
+        this.historialMedico.agregarConsulta(consulta);
     }
 
+    public HistorialMedico getHistorialMedico() {
+        return this.historialMedico;
+    }
 
-    public static HistorialMedico getHistorialMedico() {
-        return historialMedico;
+    public Paciente(int nroRegistro, String nombreAnimal, int edad, String razaAnimal, String especie) {
+        this.numeroRegistro = nroRegistro;
+        this.nombreAnimal = nombreAnimal;
+        this.edad = edad;
+        this.razaAnimal = razaAnimal;
+        this.especie = especie;
+        this.historialMedico = new HistorialMedico();
+    }
+
+    public int calcularCostos() {
+        int retorno = 0;
+        for (ConsultaMedica consulta : this.historialMedico.obtenerHistorial()) {
+            if (consulta.isPagoPendiente()) {
+                retorno += consulta.getCosto();
+            }
+        }
+        return retorno;
     }
 
     @Override
@@ -61,5 +78,4 @@ public class Paciente {
                 ", historialMedico=" + historialMedico +
                 '}';
     }
-
 }

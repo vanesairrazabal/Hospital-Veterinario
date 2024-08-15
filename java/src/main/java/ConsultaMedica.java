@@ -4,22 +4,41 @@ import java.util.Date;
 
 public class ConsultaMedica {
 
-   Date fecha;
-    String medicamento;
-    String patología;
-    static int costo;
-
-    public ConsultaMedica(String paciente, Date fecha, String medicamento, String patología, int costo) {
-        this.fecha = fecha;
-        this.medicamento = medicamento;
-        this.patología = patología;
-        this.costo = costo;
-    }
+    private Paciente paciente;
+    private Veterinario veterinario;
+    private Date fecha;
+    private String medicamento;
+    private String patologia;
+    private boolean pagoPendiente;
+    private int costo;
 
     public ConsultaMedica() {
     }
 
+    public ConsultaMedica(Paciente paciente, Veterinario veterinario, Date fecha, String medicamento, String patologia, int costo) {
+        this.paciente = paciente;
+        this.veterinario = veterinario;
+        this.fecha = fecha;
+        this.medicamento = medicamento;
+        this.patologia = patologia;
+        this.costo = costo;
+    }
 
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Veterinario getVeterinario() {
+        return veterinario;
+    }
+
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
+    }
 
     public String getMedicamento() {
         return medicamento;
@@ -37,12 +56,20 @@ public class ConsultaMedica {
         this.fecha = fecha;
     }
 
-    public String getPatología() {
-        return patología;
+    public String getPatologia() {
+        return patologia;
     }
 
-    public void setPatología(String patología) {
-        this.patología = patología;
+    public void setPatologia(String patologia) {
+        this.patologia = patologia;
+    }
+
+    public boolean isPagoPendiente() {
+        return pagoPendiente;
+    }
+
+    public void setPagoPendiente(boolean pagoPendiente) {
+        this.pagoPendiente = pagoPendiente;
     }
 
     public int getCosto() {
@@ -63,7 +90,7 @@ public class ConsultaMedica {
         return "ConsultaMedica{" +
                 "fecha='" + fecha + '\'' +
                 ", medicamento='" + medicamento + '\'' +
-                ", diagnostico='" + patología + '\'' +
+                ", diagnostico='" + patologia + '\'' +
                 ", costo='" + costo + '\'' +
                 '}';
     }

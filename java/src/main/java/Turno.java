@@ -1,5 +1,6 @@
 
-class Turno {
+public class Turno {
+
     private String fechaHora;
     private boolean reservada;
 

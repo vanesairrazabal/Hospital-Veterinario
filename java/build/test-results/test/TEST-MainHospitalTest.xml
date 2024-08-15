@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainHospitalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-14T16:14:50" hostname="RYZEN5" time="0.028">
+<testsuite name="MainHospitalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-15T02:47:15" hostname="RYZEN5" time="0.03">
   <properties/>
-  <testcase name="agregarConsulta()" classname="MainHospitalTest" time="0.028"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="buscarPacientePorNumeroDeRegistro()" classname="MainHospitalTest" time="0.03"/>
+  <system-out><![CDATA[No se pudo encontrar paciente para el nÃºmero de registro ingresado
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
